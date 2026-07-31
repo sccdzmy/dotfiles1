@@ -188,7 +188,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#AB96AC" // pywal-focus
+        active-color "#85AE98" // pywal-focus
 
         // Color of the ring on inactive monitors.
         //
@@ -296,6 +296,8 @@ spawn-at-startup "waybar"
 //spawn-at-startup "noctalia"
 spawn-at-startup  "fcitx5"
 spawn-at-startup "awww-daemon"
+// walker 常驻服务：Mod+D 只是连接它弹窗，必须有此进程
+spawn-at-startup "walker" "--gapplication-service"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -348,13 +350,7 @@ layer-rule {
 
 // waybar bar 与电源下拉菜单（power-dropdown）：实时毛玻璃
 // 胶囊背景是半透明 @bg，配合 blur 有 frosted glass 效果
-layer-rule {
-    match namespace="^power-dropdown$"
-    background-effect {
-        blur true
-        xray false
-    }
-}
+/* power-dropdown 半透明无 blur（用户选择：透明角融入背景即可） */
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
@@ -451,9 +447,10 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty" "-e" "fish"; }
-    Mod+D hotkey-overlay-title="Run an Application: ulauncher" { spawn "ulauncher"; }
+    Mod+D hotkey-overlay-title="Run an Application: walker" { spawn "walker"; }
+    //Mod+D hotkey-overlay-title="Run an Application: ulauncher" { spawn "ulauncher"; }
     //Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia msg session lock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

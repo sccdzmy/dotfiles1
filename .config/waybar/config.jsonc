@@ -125,7 +125,7 @@
         /*"format": "{}% "
 	*/
         "format": "RAM {used:.2f}G ",
-        "tooltip-format": "RAM: {used}G / {total}G ({percentage}%)\nSwap: {swapUsed}G / {swapTotal}G ({swapPercentage}%)",
+        "tooltip-format": "RAM: {used:.2f}G / {total:.2f}G ({percentage}%)\nSwap: {swapUsed:.2f}G / {swapTotal:.2f}G ({swapPercentage}%)",
         "tooltip": true
     },
     "temperature": {
