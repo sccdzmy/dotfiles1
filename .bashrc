@@ -11,4 +11,4 @@ PS1='[\u@\h \W]\$ '
 export PATH="$HOME/.local/bin:$PATH"
 
 # opencode
-export PATH=/home/x/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
