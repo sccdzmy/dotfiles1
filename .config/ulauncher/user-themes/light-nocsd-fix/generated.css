@@ -1,0 +1,7 @@
+@import url("/usr/share/ulauncher/themes/light/theme-gtk-3.20.css");
+
+/* fix: niri prefer-no-csd 下 GTK3 窗口高度不同步，结果列表底部被裁
+ * 撑高窗口底部，让候选项显示完整。值按实际裁切量调整。 */
+.app {
+    padding-bottom: 0px;
+}

@@ -1,0 +1,21 @@
+include=~/.cache/wal/mako
+
+# 基础
+default-timeout=10000
+border-radius=8
+border-size=2
+padding=12
+width=420
+anchor=top-right
+margin=12
+
+# 内容排版
+format=<b>%s</b>\n%b
+group-by=app-name
+
+[grouped]
+format=(%g) <b>%s</b>\n%b
+
+[urgency=critical]
+default-timeout=0
+border-color=#e5484d

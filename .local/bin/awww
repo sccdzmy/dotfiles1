@@ -1,0 +1,15 @@
+#!/bin/bash
+# Wrapper: intercept awww img and auto-refresh pywal colors
+REAL_AWWW="/usr/bin/awww"
+
+case "$1" in
+    img)
+        shift
+        $REAL_AWWW img "$@"
+        wal -n -i "$(grep -oP 'image: \K.*' <<< "$($REAL_AWWW query)" )" \
+            && "$HOME/.config/wal/reload-waybar.sh"
+        ;;
+    *)
+        exec $REAL_AWWW "$@"
+        ;;
+esac

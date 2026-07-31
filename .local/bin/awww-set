@@ -1,0 +1,14 @@
+#!/bin/bash
+# Wrapper: set wallpaper via awww + auto-refresh waybar colors via pywal
+# Usage: awww-set /path/to/wallpaper.png
+#        awww-set --random ~/Pictures/Wallpapers/
+
+if [ "$1" = "--random" ]; then
+    IMG=$(find "$2" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) | shuf -n1)
+else
+    IMG="$1"
+fi
+
+echo "Setting wallpaper: $IMG"
+awww img "$IMG" --transition-type center
+wal -i "$IMG" -o "$HOME/.config/wal/reload-waybar.sh"

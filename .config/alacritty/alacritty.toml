@@ -1,0 +1,52 @@
+# Alacritty 配置 — 无鼠标方案
+# 配置文件路径：~/.config/alacritty/alacritty.toml
+
+# === 复制粘贴（键盘无鼠标） ===
+# 选中文本后 Ctrl+Shift+C 复制到系统剪贴板
+# Ctrl+Shift+V 从系统剪贴板粘贴
+#
+# 无鼠标选文本方法：
+#   Ctrl+Shift+Space → 进入 Vi 模式（方向键/hjkl 移动光标）
+#   然后按 v 开始选区，移动光标选中文本
+#   再按 Ctrl+Shift+C 复制（或 y 复制到选区剪贴板，然后 Ctrl+Shift+V 粘贴）
+#
+#   如果只是想粘贴外部复制的内容：直接 Ctrl+Shift+V
+
+[keyboard]
+bindings = [
+  # 系统剪贴板复制/粘贴
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+
+  # 传统终端快捷键（Shift+Insert 粘贴）
+  { key = "Insert", mods = "Shift",   action = "Paste" },
+  { key = "Insert", mods = "Control", action = "Copy" },
+]
+
+# === 选择设置 ===
+[selection]
+# 选中文本时同时保存到系统剪贴板（不只是选区）
+# 这样即使忘了按 Ctrl+Shift+C，选中后也能直接用 Ctrl+V 在其他程序粘贴
+save_to_clipboard = true
+
+# === Shell ===
+[terminal.shell]
+program = "/usr/bin/fish"
+
+# === 窗口设置 ===
+[window]
+opacity = 0.45
+blur = true
+decorations = "none"
+padding = { x = 4, y = 4 }
+
+# === 字体 ===
+[font]
+size = 11.0
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+
+# === 颜色（终端默认，会被 pywal 覆盖） ===
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[terminal]
